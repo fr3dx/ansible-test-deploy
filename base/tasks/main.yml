@@ -1,0 +1,4 @@
+---
+- include: install_base_packages.yml
+- include: set_hostname_hosts.yml
+- include: set_ssh_ssh_keys.yml

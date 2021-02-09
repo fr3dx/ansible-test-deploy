@@ -1,0 +1,38 @@
+---
+- name: Ssh KEYGEN
+  command: ssh-keygen -q -t ed25519 -N "" -C "{{ email_address }}" -f "{{ ssh_home_folder }}/id_ed25519"
+  args:
+    creates: "{{ ssh_home_folder }}/id_ed25519"
+
+- name: Fetch SSH keys
+  ansible.builtin.fetch:
+    src: "{{ ssh_home_folder }}/{{ item }}"
+    dest: "keys/{{ item }}"
+    flat: True
+  loop:
+    - id_ed25519
+    - id_ed25519.pub
+
+- name: Backup SSHD config
+  ansible.builtin.fetch:
+    src: "{{ ssh_conf_folder }}/sshd_config"
+    dest: configs/
+    flat: True
+
+- name: Deploy FIREWALLD config
+  ansible.builtin.template:
+    src: ssh.j2
+    dest: "{{ firewalld_conf_folder }}/ssh.xml"
+    mode: 0644
+    backup: True
+
+- name: Deploy SSHD config
+  ansible.builtin.template:
+    src: sshd_config.j2
+    dest: "{{ ssh_conf_folder }}/sshd_config"
+    mode: 0600
+    validate: /usr/sbin/sshd -t -f %s
+    backup: True
+  notify: 
+  - restart_sshd
+  - reload_firewalld

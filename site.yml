@@ -1,0 +1,9 @@
+---
+# Deploy fr3dx VM
+
+- name : apply base configuration to fr3dx VM
+  hosts: all
+  gather_facts: true
+ 
+  roles:
+  - base

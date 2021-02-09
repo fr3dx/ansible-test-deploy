@@ -1,0 +1,19 @@
+---
+- name: Set HOSTNAME
+  hostname:
+    name: "CENTOSAXX1.home"
+
+- name: "Collecting data"
+  debug:
+    var: ansible_fqdn
+
+- name: Remove HOSTS config
+  file:
+    path: "{{ hosts_file }}"
+    state: absent
+  when: ansible_fqdn != "CENTOSAXX1.home"
+
+- name: Deploy HOSTS config
+  ansible.builtin.template:
+    src: hosts.j2
+    dest: "{{ hosts_file }}"

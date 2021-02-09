@@ -1,0 +1,10 @@
+---
+ansible_port: 22
+ssh_port: 16022
+ssh_conf_folder: "/etc/ssh/"
+ssh_home_folder: "~/.ssh"
+firewalld_conf_folder: "/usr/lib/firewalld/services/"
+hosts_file: "/etc/hosts"
+email_address: "x@x.com"
+base_packages: "[wget, vim, git, zsh, flatpak]"
+...
