@@ -1,15 +1,15 @@
 ######################
 # Managed by Ansible #
 ######################
-Port 22
+Port 16022
 ListenAddress {{ ansible_default_ipv4.address }}
 HostKey /etc/ssh/ssh_host_rsa_key
 HostKey /etc/ssh/ssh_host_ecdsa_key
 HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTHPRIV
-PermitRootLogin yes
+PermitRootLogin no
 AuthorizedKeysFile      .ssh/authorized_keys
-PasswordAuthentication yes
+PasswordAuthentication no
 ChallengeResponseAuthentication no
 GSSAPIAuthentication yes
 GSSAPICleanupCredentials no
