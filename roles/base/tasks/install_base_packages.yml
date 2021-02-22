@@ -1,0 +1,4 @@
+---
+- name: Install PACKAGES
+  ansible.builtin.yum:
+    name: "{{ base_packages }}"

@@ -3,9 +3,9 @@
 ######################
 Port {{ ssh_port }}
 ListenAddress {{ ansible_default_ipv4.address }}
-HostKey {{ ssh_conf_folder }}/ssh_host_rsa_key
-HostKey {{ ssh_conf_folder }}/ssh_host_ecdsa_key
-HostKey {{ ssh_conf_folder }}/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTHPRIV
 PermitRootLogin no
 AuthorizedKeysFile      .ssh/authorized_keys

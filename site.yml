@@ -1,9 +1,8 @@
 ---
 # Deploy fr3dx VM
 
-- name : apply base configuration to fr3dx VM
-  hosts: all
+- hosts: 192.168.1.51
   gather_facts: true
  
   roles:
-  - base
+    - base

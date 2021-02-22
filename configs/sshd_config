@@ -1,13 +1,13 @@
 ######################
 # Managed by Ansible #
 ######################
-Port 22
+Port 16022
 ListenAddress 192.168.1.51
-HostKey /etc/ssh//ssh_host_rsa_key
-HostKey /etc/ssh//ssh_host_ecdsa_key
-HostKey /etc/ssh//ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+HostKey /etc/ssh/ssh_host_ed25519_key
 SyslogFacility AUTHPRIV
-PermitRootLogin yes
+PermitRootLogin no
 AuthorizedKeysFile      .ssh/authorized_keys
 PasswordAuthentication yes
 ChallengeResponseAuthentication no
